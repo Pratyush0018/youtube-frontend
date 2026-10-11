@@ -14,7 +14,7 @@ const initialState = {
 
 export const createAccount = createAsyncThunk( "auth/register", async (data) => {
 
-    const formData = new formData()
+    const formData = new FormData()
 
     formData.append("username", data.username);
     formData.append("email", data.email)
@@ -240,8 +240,8 @@ builder.addCase(changePassword.rejected, (state, action) => {
     })        
 
 builder.addCase(updateUserDetails.pending, (state) => {
-});
-state.loading = true;
+    state.loading = true;
+}); 
 builder.addCase(updateUserDetails.fulfilled, (state, action) => {
     state.status = true;
     state.loading = false;
